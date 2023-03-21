@@ -1,0 +1,131 @@
+.product {
+  .product__container {
+    // height: calc(100vh - 80px);
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .wrapper {
+      width: 80%;
+      // border: 1px solid red;
+      display: flex;
+      justify-content: space-between;
+      gap: 100px;
+      height: 100%;
+      padding: 3rem;
+      .left {
+        flex: 1;
+
+        .hero__img {
+          width: 500px;
+          height: 500px;
+          //   object-fit: cover;
+        }
+
+        .other__images {
+          width: 100%;
+          margin-top: 1rem;
+          display: flex;
+          gap: 1rem;
+          .small__img {
+            width: 80px;
+            height: 50px;
+            cursor: pointer;
+          }
+        }
+      }
+
+      .right {
+        flex: 1;
+
+        h3 {
+          font-weight: 700;
+          font-family: "Poppins", sans-serif;
+          font-size: 1.5rem;
+          letter-spacing: 1.5px;
+        }
+
+        .price {
+          margin-top: 0.75rem;
+          font-size: 1.25rem;
+          letter-spacing: 1.25px;
+          font-weight: 800;
+          color: lightcoral;
+        }
+
+        hr {
+          color: rgb(217, 217, 217);
+          margin-top: 1rem;
+          border-width: 0.5px;
+        }
+
+        .desc {
+          margin-top: 1.25rem;
+          color: #777;
+          line-height: 1.9rem;
+          font-size: 18px;
+        }
+
+        .cart {
+          margin-top: 2rem;
+          gap: 1rem;
+          display: flex;
+
+          .counter {
+            flex: 0.25;
+            border: 1px solid gray;
+            display: flex;
+            justify-content: space-between;
+            align-content: center;
+            font-size: 1.5rem;
+            padding: 1rem 2rem;
+            color: gray;
+
+            .counter__btn {
+              color: gray;
+              border: none;
+              background-color: transparent;
+              cursor: pointer;
+              font-size: 1.5rem;
+              outline: none;
+              &:hover {
+                color: lightcoral;
+              }
+            }
+          }
+
+          .add__to__cart {
+            flex: 1;
+            font-family: "Poppins", sans-serif;
+            letter-spacing: 2px;
+            border: none;
+            background-color: rgba(0, 0, 0, 0.75);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            transition: all 0.3s ease;
+            cursor: pointer;
+
+            &:hover {
+              background-color: rgb(154, 70, 70);
+            }
+          }
+
+          .wishlist__btn {
+            flex: 0.25;
+            border: 1px solid lightgray;
+            background-color: white;
+            transition: all 0.5s ease;
+            &:hover {
+              color: white;
+              background-color: lightcoral;
+            }
+          }
+        }
+      }
+    }
+  }
+}

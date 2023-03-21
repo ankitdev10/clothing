@@ -1,0 +1,50 @@
+.banner {
+  height: calc(100vh - 150px);
+  background: linear-gradient(to right, #000 20%, #888);
+
+
+  .banner__wrapper {
+    display: flex;
+    align-items: center;
+    padding: 0rem 5rem;
+
+    .left {
+      flex: 1;
+      font-size: 3rem;
+      font-family: "Poppins", sans-serif;
+      // background: red;
+      text-align: center;
+    }
+
+    .center__img {
+      flex: 1.5;
+      display: flex;
+      // background: blue;
+      justify-content: center;
+      align-items: center;
+      .banner__img {
+        width: 60%;
+        object-fit: cover;
+      }
+    }
+
+    .right__btn {
+      flex: 1;
+
+      .btn {
+        border: none;
+        padding: 0.5rem;
+        font-size: 0.8rem;
+        background-color: rgba(0, 0, 0, 0.902);
+        color: white;
+        transition:  all 0.3s ease-in;
+        cursor: pointer;
+
+        &:hover {
+          background: #fff;
+          color: #000;
+        }
+      }
+    }
+  }
+}

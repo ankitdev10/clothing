@@ -1,0 +1,59 @@
+.testimonial {
+  background: linear-gradient(to right, #000 20%, #3f3f3f);
+  color: white;
+  height: 80vh;
+  margin-top: 3rem;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: -15px;
+    left: 0;
+    height: 50px;
+    width: 100%;
+    background-color: white;
+    //   transform-origin: 0 0;
+    transform: skewY(1deg);
+  }
+
+  .wrapper {
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    text-align: center;
+    position: relative;
+    background-attachment: red;
+
+    &::before {
+      content: open-quote;
+      position: absolute;
+      top: -50px;
+      left: 50%;
+      font-size: 3rem;
+      color: white;
+      font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+        "Lucida Sans", Arial, sans-serif;
+    }
+
+    .review {
+      color: #999;
+      font-size: 1rem;
+      font-family: "Poppins" sans-serif;
+    }
+
+    .author{
+        font-family: "Poppins", sans-serif;
+        font-size: 1.5rem;
+        letter-spacing: 1px;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+  }
+}

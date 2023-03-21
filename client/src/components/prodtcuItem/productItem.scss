@@ -1,0 +1,104 @@
+.card {
+  width: 300px;
+  //   background: red;
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+
+  .card__top {
+    width: 100%;
+    position: relative;
+
+    &:hover {
+      .hover__container {
+        display: flex;
+      }
+    }
+
+    img {
+      width: 100%;
+      height: 300px;
+      object-fit: contain;
+    }
+
+    .hover__container {
+      position: absolute;
+      top: 80%;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 0.5rem;
+      display: none;
+
+      .hover__icon {
+        color: rgba(0, 0, 0, 0.505);
+        background-color: white;
+        padding: 0.5rem;
+        font-size: 2.5rem;
+        transition: all 0.5s ease;
+        cursor: pointer;
+
+        &:hover {
+          color: white;
+          background-color: brown;
+        }
+      }
+    }
+  }
+
+  .card__info {
+    font-size: 14px;
+    color: #969696;
+    text-align: center;
+    margin-top: 10px;
+    font-weight: 600;
+  }
+
+  .card__price {
+    text-align: center;
+    color: lightcoral;
+    font-size: 1rem;
+    margin-top: 8px;
+    font-weight: bold;
+    letter-spacing: 2px;
+  }
+
+  .cart__btn {
+    border: none;
+    background: lightgray;
+    font-size: 15px;
+    font-weight: 400;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    position: relative;
+    width: max-content;
+    margin: auto;
+    margin-top: 10px;
+    z-index: 1;
+    transition: color 0.3s;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+
+    &::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      background-color: lightcoral;
+      z-index: -1;
+      transition: transform 0.2s;
+      transform-origin: 0 0;
+      transition-timing-function: cubic-bezier(0.5, 1.6, 0.4, 0.7);
+      transform: scaleX(0);
+    }
+
+    &:hover {
+      color: white;
+      &::before {
+        transform: scaleX(1);
+      }
+    }
+  }
+}
