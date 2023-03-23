@@ -19,7 +19,7 @@ export const cartStore = create((set) => ({
 }));
 
 export const userStore = create((set) => ({
-  user: {},
+  user: JSON.parse(localStorage.getItem("user")) || null,
   saveUser: (user) => {
     set((state) => ({ user: { ...state.user, user } }));
   },

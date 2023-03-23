@@ -16,6 +16,18 @@ export class User {
 
   @Prop()
   wishlist: [string];
+
+  @Prop({ required: true })
+  phone: string;
+
+  @Prop({ required: true })
+  country: string;
+
+  @Prop({ required: true })
+  street: string;
+
+  @Prop({ required: true })
+  city: string;
 }
 
 export const UserSchema = SchemaFactory.createForClass(User);

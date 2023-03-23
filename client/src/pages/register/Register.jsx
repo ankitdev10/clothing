@@ -1,34 +1,25 @@
+import "./register.scss";
 import { useRef } from "react";
-import "./login.scss";
-import { useMutation } from "react-query";
+import { isError, useMutation } from "react-query";
 import axios from "axios";
-import { userStore } from "../../store";
 import { useNavigate } from "react-router-dom";
 
-const Login = () => {
-  const usernameRef = useRef();
-  const passwordRef = useRef();
+const Register = () => {
   const navigate = useNavigate();
-  const { saveUser } = userStore((state) => state);
+  const usernameRef = useRef();
+  const emailRef = useRef();
+  const passwordRef = useRef();
 
-  const { mutate, isSuccess } = useMutation(
-    (user) => {
-      return axios.post("/user/login", user);
-    },
-    {
-      onSuccess: (data) => {
-        saveUser(data.data);
-        localStorage.setItem("user", JSON.stringify(data.data));
-        navigate("/");
-      },
-    }
-  );
+  const { mutate, isSuccess, isError, error } = useMutation((user) => {
+    return axios.post("/user/register", user);
+  });
 
-  const handleLogin = (e) => {
+  const handleRegister = (e) => {
     e.preventDefault();
     const user = {
       username: usernameRef.current?.value,
       password: passwordRef.current?.value,
+      email: emailRef.current?.value,
     };
     mutate(user);
   };
@@ -36,12 +27,16 @@ const Login = () => {
   return (
     <div className="login__container">
       <div className="wrapper">
-        <h3 className="login__title">Login</h3>
-        <h5 className="login__subtitle">Hi! Welcome Back 👋</h5>
+        <h3 className="login__title">Register</h3>
+        <h5 className="login__subtitle">Hi! Welcome to the family 👋</h5>
         <form action="">
           <div className="input__box">
             <label htmlFor="username">Username</label>
             <input ref={usernameRef} type="text" placeholder="Username" />
+          </div>
+          <div className="input__box">
+            <label htmlFor="username">Email</label>
+            <input ref={emailRef} type="email" placeholder="Email" />
           </div>
           <div className="input__box">
             <label htmlFor="password">Password</label>
@@ -51,16 +46,17 @@ const Login = () => {
               placeholder="Password..."
             />
           </div>
-          <button onClick={handleLogin} className="login__btn">
-            Login
+          <button onClick={handleRegister} className="login__btn">
+            Register
           </button>
         </form>
         <p className="bottom__text">
-          Don't have an account? <span>Register</span>
+          Already have an account? <span>Login</span>
         </p>
+        {/* {isError && <p>{error}</p>} */}
       </div>
     </div>
   );
 };
 
-export default Login;
+export default Register;

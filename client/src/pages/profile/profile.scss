@@ -1,0 +1,111 @@
+.profile {
+  height: 100vh;
+  background: #f6f6f6;
+  padding: 5rem 10rem;
+  display: flex;
+  justify-content: center;
+
+  .profile__wrapper {
+    width: 80%;
+    display: flex;
+    padding: 1rem;
+    background: white;
+    border-radius: 1rem;
+
+    .left {
+      min-height: 300px;
+      width: 150px;
+      background: #fff;
+      border-right: 1px solid #eee;
+      padding-right: 1rem;
+      position: relative;
+
+      h4 {
+        font-size: 15px;
+        font-weight: bold;
+        color: #5489fa;
+        background: #e9f0ff;
+        border-radius: 1rem;
+        text-align: center;
+        padding: 2px 5px;
+        cursor: pointer;
+
+        &:hover {
+          background: #9dcbffb3;
+        }
+      }
+
+      .delete__acc {
+        position: absolute;
+        bottom: 20px;
+        text-align: center;
+        color: #f39e9f;
+        cursor: pointer;
+      }
+    }
+
+    .right {
+      padding: 0rem 2rem;
+      width: 60%;
+
+      .top,
+      .bottom {
+        position: relative;
+        h3 {
+          font-size: 15px;
+        }
+        button {
+          color: gray;
+          position: absolute;
+          right: 0;
+          top: 0;
+          background: white;
+          padding: 4px 10px;
+          border: 1px solid lightgray;
+          border-radius: 1rem;
+          cursor: pointer;
+        }
+
+        .cancel__edit {
+          font-weight: bold;
+          font-size: 12px;
+          border: none;
+          color: red;
+          right: -30px;
+        }
+
+        form {
+          display: grid;
+          grid-template-columns: repeat(2, 1fr);
+          margin-top: 2rem;
+
+          .item {
+            display: flex;
+            flex-direction: column;
+            margin-top: 10px;
+
+            label {
+              color: gray;
+              font-weight: bold;
+              font-size: 14px;
+              text-transform: capitalize;
+            }
+
+            input {
+              color: #666;
+              margin-top: 5px;
+              width: 60%;
+              padding: 2px;
+              outline: none;
+
+              &:disabled {
+                border: none;
+                background: transparent;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

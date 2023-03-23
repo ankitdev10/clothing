@@ -25,11 +25,7 @@ export class UserController {
 
   @Post('/register')
   async createUser(@Body() user) {
-    return this.userService.createUser(
-      user.username,
-      user.email,
-      user.password,
-    );
+    return this.userService.createUser(user);
   }
   @Post('/login')
   async loginUser(@Body() user) {
@@ -41,8 +37,24 @@ export class UserController {
     return this.userService.deleteUser(id);
   }
 
-  @Put('/:id')
+  @Put('/update/:id')
   async updateUser(@Param('id') id: string, @Body() user) {
     return this.userService.updateUser(id, user);
+  }
+
+  @Put('/wishlist/add/:userId/:productId')
+  async addToWishlist(
+    @Param('userId') userId: string,
+    @Param('productId') productId: string,
+  ) {
+    return this.userService.addToWishlist(userId, productId);
+  }
+
+  @Put('/wishlist/remove/:userId/:productId')
+  async removeFromWishlist(
+    @Param('userId') userId: string,
+    @Param('productId') productId: string,
+  ) {
+    return this.userService.removeFromWishlist(userId, productId);
   }
 }

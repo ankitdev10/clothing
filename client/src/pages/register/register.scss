@@ -1,0 +1,67 @@
+.login__container {
+  width: 500px;
+  margin: auto;
+  margin-top: 10rem;
+  display: flex;
+  justify-content: center;
+  border: 1px solid lightgray;
+
+  .wrapper {
+    padding: 20px;
+    width: 80%;
+    .login__title {
+      font-size: 2rem;
+      letter-spacing: 1.25px;
+    }
+
+    .login__subtitle {
+      font-size: 15px;
+      font-weight: 400;
+    }
+
+    form {
+      margin-top: 20px;
+      .input__box {
+        display: flex;
+        flex-direction: column;
+
+        label {
+          font-weight: 500;
+          margin-bottom: 5px;
+        }
+
+        input {
+          color: gray;
+          outline: none;
+          width: 80%;
+          padding: 5px;
+          margin-bottom: 5px;
+        }
+      }
+
+      .login__btn {
+        color: white;
+        font-weight: bold;
+        background: #3e38f5;
+        margin-top: 5px;
+        border: none;
+        bottom: 5px;
+        cursor: pointer;
+        outline: none;
+        width: 80%;
+        padding: 5px;
+      }
+    }
+
+    .bottom__text {
+      margin-top: 20px;
+      font-size: 14px;
+
+      span {
+        color: blue;
+        font-weight: bold;
+        cursor: pointer;
+      }
+    }
+  }
+}
