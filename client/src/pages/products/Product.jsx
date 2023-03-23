@@ -8,10 +8,12 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import { useQuery } from "react-query";
+import { cartStore } from "../../store";
+import { toast } from "react-toastify";
 
 const Product = () => {
   const [count, setCount] = useState(1);
-
+  const { cartItems, addCartItem } = cartStore((state) => state);
   const hanldeCount = (type) => {
     type === "i" ? setCount((prev) => prev + 1) : setCount((prev) => prev - 1);
   };
@@ -27,6 +29,22 @@ const Product = () => {
   };
 
   const { data, isLoading } = useQuery("singleProduct", getProd);
+
+  const addItem = () => {
+    if (!cartItems.includes(data?.data._id)) {
+      addCartItem(data?.data._id);
+      toast.success("Item added to your cart", {
+        position: "bottom-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      });
+    }
+  };
 
   return (
     <div className="product">
@@ -71,7 +89,7 @@ const Product = () => {
                   +
                 </button>
               </div>
-              <button className="add__to__cart">
+              <button className="add__to__cart" onClick={addItem}>
                 <AddShoppingCartIcon /> ADD TO CART
               </button>
               <button className="wishlist__btn">

@@ -6,11 +6,14 @@ import { motion } from "framer-motion";
 import { useState } from "react";
 import Cart from "../cart/Cart";
 import { cartStore } from "../../store";
+import DropDown from "../dropdown/DropDown";
 
 const Navbar = ({ page }) => {
-  const [color, setColor] = useState(false); // navbar color
+  const { cartItems } = cartStore((state) => state);
 
+  const [color, setColor] = useState(false); // navbar color
   const [openCart, setOpenCart] = useState(false);
+  const [openMenu, setOpenMenu] = useState(false);
   const changeColor = () => {
     if (window.scrollY >= 300) {
       setColor(true);
@@ -20,7 +23,15 @@ const Navbar = ({ page }) => {
   };
   window.addEventListener("scroll", changeColor);
 
-  const { cartItems } = cartStore((state) => state);
+  const showDropDown = () => {
+    setOpenCart(false);
+    setOpenMenu(!openMenu);
+  };
+
+  const showCart = () => {
+    setOpenMenu(false);
+    setOpenCart(!openCart);
+  };
   return (
     <motion.div
       initial={page !== "p" && { opacity: 0 }}
@@ -83,14 +94,19 @@ const Navbar = ({ page }) => {
         </span>
       </div>
       <div className="navbar__misc">
-        <PersonOutline className="navbar__icon" />
+        <div className="dropdown__container">
+          <PersonOutline className="navbar__icon" onClick={showDropDown} />
+
+          {openMenu && (
+            <div className="dropdown">
+              <DropDown />
+            </div>
+          )}
+        </div>
 
         <div className="cart__container">
           <div className="cart__icon">
-            <ShoppingCartOutlined
-              onClick={() => setOpenCart(!openCart)}
-              className="navbar__icon"
-            />
+            <ShoppingCartOutlined onClick={showCart} className="navbar__icon" />
             <span className="counter">{cartItems.length}</span>
           </div>
           {openCart && (

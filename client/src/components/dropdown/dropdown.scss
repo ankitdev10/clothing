@@ -1,0 +1,29 @@
+.dropdown__box {
+  width: 200px;
+  max-height: 400px;
+  background-color: white;
+  color: #000;
+  border-radius: 10px;
+  box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+  padding: 1rem 2rem;
+  .wrapper {
+    ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      li {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        border-radius: 10px;
+        cursor: pointer;
+        transition: all 0.2s ease;
+
+        &:hover {
+          color: hotpink;
+        }
+      }
+    }
+  }
+}
