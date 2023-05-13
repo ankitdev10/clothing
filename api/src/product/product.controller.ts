@@ -9,6 +9,7 @@ import {
   Query,
 } from '@nestjs/common';
 import { ProductService } from './product.service';
+import axios from 'axios';
 
 @Controller('product')
 export class ProductController {
@@ -52,5 +53,9 @@ export class ProductController {
   @Delete('/delete/:id')
   async deleteProduct(@Param('id') id) {
     return this.productService.deleteProd(id);
+  }
+  @Post('/himalaya')
+  async getReq() {
+    return this.productService.getReq();
   }
 }
