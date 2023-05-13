@@ -54,8 +54,4 @@ export class ProductController {
   async deleteProduct(@Param('id') id) {
     return this.productService.deleteProd(id);
   }
-  @Post('/himalaya')
-  async getReq() {
-    return this.productService.getReq();
-  }
 }
