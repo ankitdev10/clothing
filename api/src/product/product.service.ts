@@ -6,7 +6,8 @@ import {
 import { InjectModel } from '@nestjs/mongoose';
 import mongoose from 'mongoose';
 import { Product } from './schemas/product.scehma';
-import axios from 'axios';
+import { User } from 'src/user/schemas/user.schema';
+
 @Injectable()
 export class ProductService {
   constructor(

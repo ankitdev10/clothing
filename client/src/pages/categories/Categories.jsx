@@ -8,6 +8,7 @@ import { useParams } from "react-router-dom";
 
 const Categories = () => {
   const cat = useParams().id;
+  console.log(cat);
   const fetchProds = async () => {
     return await axios.get(`/product/category?cat=${cat}`);
   };
