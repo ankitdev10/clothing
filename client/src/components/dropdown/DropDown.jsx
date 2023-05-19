@@ -7,9 +7,14 @@ import {
 } from "@mui/icons-material";
 import { userStore } from "../../store";
 import { Link } from "react-router-dom";
-const DropDown = () => {
-  const { user } = userStore((state) => state);
 
+const DropDown = () => {
+  const { user, removeUser } = userStore((state) => state);
+  const handleLogout = () => {
+    console.log("asas");
+
+    localStorage.removeItem("user");
+  };
   return (
     <div className="dropdown__box">
       <div className="wrapper">
@@ -25,7 +30,7 @@ const DropDown = () => {
             <span>Wishlist</span>
           </li>
           {user ? (
-            <li>
+            <li onClick={handleLogout}>
               <Logout />
               <span>Logout</span>
             </li>

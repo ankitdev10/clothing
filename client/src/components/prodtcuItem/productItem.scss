@@ -39,6 +39,10 @@
         transition: all 0.5s ease;
         cursor: pointer;
 
+        &.fav {
+          color: red;
+        }
+
         &:hover {
           color: white;
           background-color: brown;

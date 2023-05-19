@@ -1,17 +1,18 @@
 import "./productItem.scss";
 import { FavoriteBorder, Visibility } from "@mui/icons-material";
+import FavoriteIcon from "@mui/icons-material/Favorite";
 import { Link } from "react-router-dom";
 import { cartStore, userStore } from "../../store";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useMutation } from "react-query";
 import axios from "axios";
+
 const ProductItem = ({ item }) => {
   const { cartItems, addCartItem } = cartStore((state) => state);
   const { user } = userStore((state) => state);
 
   // ADD ITEM TO CART
-
   const addItem = () => {
     if (!cartItems.includes(item._id)) {
       addCartItem(item._id);
@@ -61,10 +62,14 @@ const ProductItem = ({ item }) => {
           <img src={item?.imgUrl} alt="" />
 
           <div className="hover__container">
-            <FavoriteBorder
-              onClick={() => handleAddToCart(user?._id, item?._id)}
-              className="hover__icon"
-            />
+            {user?.wishlist?.includes(item._id) ? (
+              <FavoriteIcon className="hover__icon fav" />
+            ) : (
+              <FavoriteBorder
+                onClick={() => handleAddToCart(user?._id, item?._id)}
+                className="hover__icon"
+              />
+            )}
             <Link to={`/product/${item._id}`} className="link">
               <Visibility className="hover__icon" />
             </Link>
