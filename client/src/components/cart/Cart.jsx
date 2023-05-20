@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import "./cart.scss";
 import { cartStore } from "../../store";
 import CartItem from "../cartitems/CartItem";
-import { useQuery } from "react-query";
 
 const Cart = () => {
   const { cartItems } = cartStore((state) => state);

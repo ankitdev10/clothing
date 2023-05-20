@@ -10,10 +10,10 @@ import { Link } from "react-router-dom";
 
 const DropDown = () => {
   const { user } = userStore((state) => state);
-  console.log(user);
+
   const handleLogout = () => {
     localStorage.removeItem("user");
-    location.reload();
+    window.location.reload();
   };
   return (
     <div className="dropdown__box">
@@ -25,10 +25,12 @@ const DropDown = () => {
               <span>Account</span>
             </li>
           </Link>
-          <li>
-            <FavoriteBorder />
-            <span>Wishlist</span>
-          </li>
+          <Link className="link" to={user ? `/wishlist/${user._id}` : "/login"}>
+            <li>
+              <FavoriteBorder />
+              <span>Wishlist</span>
+            </li>
+          </Link>
           {user ? (
             <li onClick={handleLogout}>
               <Logout />

@@ -8,7 +8,7 @@ import Register from "./pages/register/Register";
 import { ToastContainer } from "react-toastify";
 import Profile from "./pages/profile/Profile";
 import { userStore } from "./store";
-import Wishlist from "./components/wishlist/Wishlist";
+import Wishlist from "./pages/wishlist/Wishlist";
 function App() {
   const queryClient = new QueryClient();
   const { user } = userStore((state) => state);
@@ -38,6 +38,11 @@ function App() {
             exact
             path="/profile/:userId"
             element={user ? <Profile /> : <Login />}
+          />
+          <Route
+            exact
+            path="/wishlist/:id"
+            element={user ? <Wishlist /> : <Login />}
           />
         </Routes>
       </BrowserRouter>
