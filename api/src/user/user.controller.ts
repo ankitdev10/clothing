@@ -57,4 +57,9 @@ export class UserController {
   ) {
     return this.userService.removeFromWishlist(userId, productId);
   }
+
+  @Get('/wishlist/:id')
+  async getWishlistItems(@Param('id') id: string) {
+    return this.userService.getWishlistItems(id);
+  }
 }

@@ -6,6 +6,7 @@ import {
 } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { User } from './schemas/user.schema';
+import { Product } from '../product/schemas/product.scehma';
 import * as mongoose from 'mongoose';
 import * as bcrypt from 'bcrypt';
 @Injectable()
@@ -13,6 +14,9 @@ export class UserService {
   constructor(
     @InjectModel(User.name)
     private userModel: mongoose.Model<User>,
+
+    @InjectModel(Product.name)
+    private productModel: mongoose.Model<Product>,
   ) {}
 
   async getAllUsers(): Promise<User[] | {}> {
@@ -133,5 +137,16 @@ export class UserService {
     );
     const { password, ...details } = findUser;
     return details;
+  }
+
+  async getWishlistItems(id: string) {
+    const user = await this.userModel.findById(id);
+    const wishListItems = Promise.all(
+      user.wishlist.map((id) => {
+        return this.productModel.find({ _id: id });
+      }),
+    );
+
+    return (await wishListItems).flat();
   }
 }
