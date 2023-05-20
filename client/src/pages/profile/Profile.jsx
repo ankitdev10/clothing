@@ -59,6 +59,14 @@ const Profile = () => {
     },
   ];
 
+  const deleteUser = async () => {
+    try {
+      const res = await axios.delete("/user" + _id);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   const handleEditable = (e) => {
     const { name } = e.target;
     if (name === "personal") {

@@ -9,17 +9,17 @@ import { userStore } from "../../store";
 import { Link } from "react-router-dom";
 
 const DropDown = () => {
-  const { user, removeUser } = userStore((state) => state);
+  const { user } = userStore((state) => state);
+  console.log(user);
   const handleLogout = () => {
-    console.log("asas");
-
     localStorage.removeItem("user");
+    location.reload();
   };
   return (
     <div className="dropdown__box">
       <div className="wrapper">
         <ul>
-          <Link to={`/profile/${user ? user._id : "login"}`} className="link">
+          <Link to={user ? `/profile/${user._id}` : "/login"} className="link">
             <li>
               <ManageAccounts />
               <span>Account</span>

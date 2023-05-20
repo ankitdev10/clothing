@@ -72,7 +72,7 @@ export class UserService {
   }
 
   async updateUser(id: string, user: User) {
-    console.log(user)
+    console.log(user);
     const findUser = await this.userModel.findById(id);
     //  check if logged in user is same as id to be updated
     if (user.password) {
@@ -81,7 +81,7 @@ export class UserService {
       const hash = await bcrypt.hash(user.password, salt);
       user.password = hash;
     }
-    await this.userModel.findByIdAndUpdate(
+    const updatedUser = await this.userModel.findByIdAndUpdate(
       id,
       {
         $set: { ...user },
@@ -89,7 +89,7 @@ export class UserService {
       { new: true },
     );
 
-    return 'Sucessfully updated your account';
+    return updatedUser;
   }
 
   async deleteUser(id: string) {
